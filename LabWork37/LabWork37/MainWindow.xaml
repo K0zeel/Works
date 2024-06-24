@@ -1,0 +1,29 @@
+﻿<Window x:Class="LabWork37.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LabWork37"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <StackPanel>
+        <Grid>
+            <ListView x:Name="listView">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Имя файла"/>
+                        <GridViewColumn Header="Расширение"/>
+                        <GridViewColumn Header="Путь к файлу"/>
+                        <GridViewColumn Header="Размер"/>
+                        <GridViewColumn Header="Дата создания"/>
+                        <GridViewColumn Header="Дата изменения"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
+        <Label x:Name="fileNameLabel" Content="Укажите имя файла"/>
+        <TextBox x:Name="inputTextBox" TextChanged="InputTextBox_TextChanged"/>
+        <Button x:Name="clearFilterButton" Content="Сбросить фильтр" Click="clearFilterButton_Click"/>
+        <DataGrid x:Name="resultDataGrid"/>
+    </StackPanel>
+</Window>
