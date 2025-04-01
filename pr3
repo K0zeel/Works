@@ -1,0 +1,87 @@
+3.1
+import random
+
+# Генерируем случайное число от 1 до 1000
+number = random.randint(1, 1000)
+print(f"Сгенерированное число: {number}")
+
+# Проверка на простоту
+is_prime = True
+if number < 2:
+    is_prime = False
+else:
+    for i in range(2, int(number**0.5) + 1):
+        if number % i == 0:
+            is_prime = False
+            break
+
+if is_prime:
+    print(f"{number} является простым числом.")
+else:
+    print(f"{number} не является простым числом.")
+3.2
+import random
+
+# Загадываем случайное число от 1 до 10
+secret_number = random.randint(1, 10)
+
+while True:
+    guess = int(input("Угадайте число от 1 до 10: "))
+    
+    if guess == secret_number:
+        print("Вы молодец! Вы угадали число.")
+        break
+    elif guess < secret_number:
+        print("Загаданное число больше.")
+    else:
+        print("Загаданное число меньше.")
+3.3
+print("Температура по Цельсию в Фаренгейт:")
+
+for celsius in range(100, -1, -10):
+    fahrenheit = celsius * 1.8 + 32
+    print(f"F({celsius}) = {fahrenheit:.2f}")
+3.4
+while True:
+    purchase_amount = float(input("Введите сумму покупки: "))
+    
+    if purchase_amount <= 0:
+        print("Сумма покупки должна быть больше нуля. Повторите ввод.")
+        continue
+    
+    while True:
+        paid_amount = float(input("Введите внесенную сумму: "))
+        
+        if paid_amount < purchase_amount:
+            shortfall = purchase_amount - paid_amount
+            print(f"Недостающая сумма: {shortfall:.2f}. Повторите ввод.")
+        else:
+            break
+    
+    if paid_amount == purchase_amount:
+        print("Спасибо!")
+    else:
+        change = paid_amount - purchase_amount
+        print(f"Возьмите сдачу: {change:.2f}")
+    
+    break
+3.5
+N = int(input("Введите количество значений N: "))
+a = float(input("Введите значение a: "))
+b = float(input("Введите значение b: "))
+x1 = float(input("Введите значение x1: "))
+x2 = float(input("Введите значение x2: "))
+
+if x1 > x2:
+    step = (x1 - x2) / (N - 1)
+else:
+    step = (x2 - x1) / (N - 1)
+
+x_values = [x1 + i * step for i in range(N)]
+
+if x1 > x2:
+    x_values.reverse()
+
+for x in x_values:
+    y = a * x + b
+    print(f"y({x:.2f}) = {a}*{x:.2f}+{b}={y:.3f}")
