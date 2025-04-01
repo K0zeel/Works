@@ -1,0 +1,84 @@
+6.1
+def divide_numbers():
+    try:
+        a = float(input("Введите число a: "))
+        b = float(input("Введите число b: "))
+        result = a / b
+        print(f"Результат деления {a} на {b}: {result}")
+    except ZeroDivisionError:
+        print("Ошибка: Деление на ноль невозможно.")
+
+divide_numbers()
+6.2
+def divide_numbers():
+    a = float(input("Введите число a: "))
+    
+    while True:
+        try:
+            b = float(input("Введите число b (не 0): "))
+            if b == 0:
+                raise ValueError("0 вводить нельзя.")
+            result = a / b
+            break  # Выход из цикла, если ввод корректен
+        except ValueError as ve:
+            print(ve)
+    
+    print(f"Результат деления {a} на {b}: {result}")
+
+divide_numbers()
+6.3
+import math
+
+def calculate_expression():
+    try:
+        x = float(input("Введите x: "))
+        y = float(input("Введите y: "))
+        z = float(input("Введите z: "))
+        
+        denominator = (x - y + z)
+        
+        if denominator == 0:
+            raise ZeroDivisionError("Ошибка: Деление на ноль.")
+        
+        numerator = math.sqrt(x + y + z)
+        
+        if numerator < 0:
+            raise ValueError("Ошибка: Под корнем отрицательное число.")
+        
+        result = numerator / denominator
+        print(f"Результат выражения √(x+y+z)/(x-y+z) равен: {result}")
+    
+    except ValueError as ve:
+        print(ve)
+    except ZeroDivisionError as zde:
+        print(zde)
+
+calculate_expression()
+6.4
+import math
+
+def calculate_expression():
+    try:
+        x = float(input("Введите x: "))
+        y = float(input("Введите y: "))
+        z = float(input("Введите z: "))
+        
+        denominator = (x - y + z)
+        
+        if denominator == 0:
+            raise ZeroDivisionError("Ошибка: Деление на ноль.")
+        
+        numerator = x + y + z
+        
+        if numerator < 0:
+            raise ValueError("Ошибка: Под корнем отрицательное число.")
+        
+        result = math.sqrt(numerator) / denominator
+        print(f"Результат выражения √(x+y+z)/(x-y+z) равен: {result}")
+    
+    except ValueError as ve:
+        print(ve)
+    except ZeroDivisionError as zde:
+        print(zde)
+
+calculate_expression()
