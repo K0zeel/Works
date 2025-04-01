@@ -1,0 +1,81 @@
+5.1
+# Запрос строки у пользователя
+user_string = input("Введите строку: ")
+
+# Вывод строки 5 раз без использования циклов
+print((user_string + '\n') * 5)
+
+# Вывод длины строки и каждого символа с указанием индекса
+print(f"Длина строки: {len(user_string)}")
+for index, char in enumerate(user_string):
+    print(f"Индекс {index}: {char}")
+
+# Вывод каждого второго символа с указанием его позиции (не индекса)
+for position in range(1, len(user_string), 2):
+    print(f"Позиция {position + 1}: {user_string[position]}")
+5.2
+user_string = input("Введите строку: ")
+start_pos = int(input("Введите начальную позицию: ")) - 1  # Приводим к индексу
+end_pos = int(input("Введите конечную позицию: "))          # Не вычитаем 1, чтобы включить конец
+
+if start_pos < 0 or end_pos > len(user_string) or start_pos >= end_pos:
+    print("Некорректные позиции.")
+else:
+    print("Символы в диапазоне:", user_string[start_pos:end_pos])
+5.3
+user_string = input("Введите строку: ")
+
+if len(user_string) > 1:
+    modified_string = '#' + user_string[1:-1] + '#'
+else:
+    modified_string = '#'
+
+print("Измененная строка:", modified_string)
+5.4
+user_string = input("Введите строку: ")
+
+if user_string.isdigit():
+    print("Строка состоит только из цифр.")
+elif user_string.isalpha():
+    if user_string.islower():
+        print("Строка состоит только из строчных букв.")
+    elif user_string.isupper():
+        print("Строка состоит только из прописных букв.")
+    else:
+        print("Строка состоит только из букв (смешанный регистр).")
+else:
+    print("Строка состоит из цифр и букв или содержит другие символы.")
+5.5
+user_string = input("Введите строку: ")
+words = user_string.split()  # Разделяем по пробелам
+result = ', '.join(words)     # Объединяем через запятую
+print("Результат:", result)
+5.6
+first_str = input("Введите первую строку: ")
+second_str = input("Введите вторую строку: ")
+
+positions = []
+start_index = 0
+
+while True:
+    start_index = second_str.find(first_str, start_index)
+    
+    if start_index == -1:
+        break
+    
+    positions.append(start_index + 1)  # Приводим к позиции (не индексу)
+    start_index += 1                    # Сдвигаем индекс для поиска следующего вхождения
+
+print(f"Первая строка встречается во второй {len(positions)} раз(а) на позициях: {positions}")
+5.7
+word = input("Введите слово: ").lower()   # Приводим к нижнему регистру
+is_palindrome = word == word[::-1]         # Сравниваем с реверсированной версией
+
+if is_palindrome:
+    print(f"{word} является палиндромом.")
+else:
+    print(f"{word} не является палиндромом.")
+5.8
+user_string = input("Введите строку с двойными пробелами: ")
+modified_string = ' '.join(user_string.split())   # Разделяем по пробелам и объединяем обратно через один пробел
+print("Результат:", modified_string)
