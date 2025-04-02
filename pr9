@@ -1,0 +1,89 @@
+class Author:
+    def __init__(self, full_name: str, country: str):
+        self.full_name = full_name
+        self.country = country
+
+    def display_info(self):
+        print(f"Автор: {self.full_name}, Страна: {self.country}")
+
+
+class Book:
+    def __init__(self, title: str):
+        self.title = title
+        self._content = []  # Приватное поле для содержания книги
+        print(f"Книга '{self.title}' создана")
+
+    def __del__(self):
+        print(f"Книга '{self.title}' удалена")
+
+    def add_work(self, work_title: str):
+        self._content.append(work_title)
+
+    def get_work_count(self) -> int:
+        return len(self._content)
+
+    def display_info(self):
+        print(f"Книга: {self.title}")
+        print("Содержание:")
+        for index, work in enumerate(self._content, start=1):
+            print(f"{index}) {work}")
+
+
+class BookAuthor(Author, Book):
+    def __init__(self, full_name: str, country: str, title: str):
+        Author.__init__(self, full_name, country)
+        Book.__init__(self, title)
+
+    def display_full_info(self):
+        self.display_info()  # Информация об авторе
+        self.display_info()  # Информация о книге
+
+
+def main():
+    n = int(input("Введите количество авторов: "))
+    authors = []
+
+    for _ in range(n):
+        full_name = input("Введите ФИО автора: ")
+        country = input("Введите страну автора: ")
+        authors.append(Author(full_name, country))
+
+    print("\nСписок всех авторов:")
+    for author in authors:
+        author.display_info()
+
+    print("\nСписок русских авторов:")
+    for author in authors:
+        if author.country.lower() == "россия":
+            author.display_info()
+
+    # Пример использования класса BookAuthor
+    book_authors = []
+    
+    while True:
+        add_more = input("\nХотите добавить книгу с автором? (да/нет): ").strip().lower()
+        
+        if add_more == 'нет':
+            break
+        
+        full_name = input("Введите ФИО автора: ")
+        country = input("Введите страну автора: ")
+        title = input("Введите название книги: ")
+
+        book_author = BookAuthor(full_name, country, title)
+        
+        while True:
+            work_title = input("Введите название произведения (или 'стоп' для завершения): ")
+            if work_title.lower() == 'стоп':
+                break
+            book_author.add_work(work_title)
+
+        book_authors.append(book_author)
+
+    print("\nИнформация о книгах и авторах:")
+    for book_author in book_authors:
+        book_author.display_full_info()
+
+
+if __name__ == "__main__":
+    main()
