@@ -1,0 +1,107 @@
+#1
+def power(a: float = 2, x: int) -> float:
+    """Возводит число a в степень x.
+    
+    Параметры:
+    a : float
+        Основание степени (по умолчанию 2).
+    x : int
+        Степень, в которую нужно возвести число a.
+    
+    Возвращает:
+    float
+        Результат возведения a в степень x.
+    """
+    return a ** x
+
+# Тестирование функции
+print(power(3, 2))  # 9
+print(power(2))     # 4 (2^2)
+
+#2
+def factorial(n: int) -> int:
+    """Вычисляет факториал числа n рекурсивно.
+    
+    Параметры:
+    n : int
+        Число, для которого нужно вычислить факториал.
+    
+    Возвращает:
+    int
+        Факториал числа n или -1, если входные данные некорректны.
+    """
+    if not isinstance(n, int) or n < 0:
+        return -1
+    if n == 0 or n == 1:
+        return 1
+    return n * factorial(n - 1)
+
+# Тестирование функции
+print(factorial(5))   # 120
+print(factorial(-1))  # -1 (некорректный ввод)
+print(factorial("a")) # -1 (некорректный ввод)
+
+#3
+def statistics(args: float):
+    """Выводит сумму, среднее, максимум, минимум и количество чисел.
+    
+    Параметры:
+    *args : float
+        Числа для анализа.
+    
+    Возвращает:
+    dict
+        Словарь с результатами статистики.
+    """
+    if not args:
+        return {}
+    
+    total = sum(args)
+    count = len(args)
+    average = total / count
+    maximum = max(args)
+    minimum = min(args)
+
+    return {
+        'sum': total,
+        'average': average,
+        'max': maximum,
+        'min': minimum,
+        'count': count,
+    }
+
+# Тестирование функции
+stats = statistics(1, 2, 3, 4, 5)
+print(stats)  
+# {'sum': 15, 'average': 3.0, 'max': 5, 'min': 1, 'count': 5}
+
+#4
+def modify_list(lst: list, multiplier: float = -1):
+    """Изменяет значения списка путем умножения каждого элемента на multiplier.
+    
+    Параметры:
+    lst : list
+        Список чисел для изменения.
+    multiplier : float
+        Число на которое нужно умножить каждый элемент (по умолчанию -1).
+    
+    Возвращает:
+    None (изменяет список на месте).
+    """
+    for i in range(len(lst)):
+        lst[i] *= multiplier
+
+# Тестирование функции
+my_list = [1, 2, 3]
+modify_list(my_list)
+print(my_list)   # [-1, -2, -3]
+modify_list(my_list, 2)
+print(my_list)   # [-2, -4, -6]
+
+#5
+linear_function = lambda a=0, b=0: lambda x: a * x + b
+
+# Тестирование лямбда-функции
+f = linear_function(2, 3) # y = 2*x + 3
+print(f(5))   # y = 13 (2*5 + 3)
+
