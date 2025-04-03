@@ -1,0 +1,42 @@
+#1
+import re
+
+text = "Это первое предложение. Это второе? А это третье... И последнее!"
+sentences = re.split(r'(?<=[.!?…])\s*', text)
+
+for sentence in sentences:
+    print(sentence)
+
+#2
+import re
+
+text = "Редиска, редиски, нехороший человек, нехорошего человека."
+pattern = r'\b(редиска|редиски|нехороший\sчеловек|нехорошего\sчеловека)\b'
+new_text = re.sub(pattern, '*давайте жить дружно*', text)
+
+print(new_text)
+
+#3
+import re
+
+text = "Сегодня 01.01.2020, а завтра 1.1.20."
+pattern = r'\b(\d{1,2})\.(\d{1,2})\.(\d{2}|\d{4})\b'
+dates = re.findall(pattern, text)
+
+for date in dates:
+    print('.'.join(date))
+
+#4
+import re
+
+def is_strong_password(password):
+    pattern = r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,}$'
+    return re.search(pattern, password) is not None
+
+while True:
+    password = input("Введите пароль: ")
+    if is_strong_password(password):
+        print("Пароль надежный.")
+        break
+    else:
+        print("Пароль не соответствует требованиям. Попробуйте снова.")
